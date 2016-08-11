@@ -4,7 +4,7 @@
 }
 
 <h2>Paras</h2>
-<div class="container">
+<div class="container-fluid">
 
     <div class="row ParaRow">
         <div class="col-sm-3 paraBorder paraBorderLeft" >
@@ -49,7 +49,7 @@
     </div>
 
     <div class="row textAreaRow">
-        <textarea rows="8" cols="50"  >
+        <textarea rows="8" cols="50" id="generatedText" >
 
             Your Text will be generated here.
 
@@ -61,6 +61,8 @@
 @section scripts
 {
     <script>
+
+        //defind jQuery method isChildOf()
         (function ($) {
             $.fn.extend({
                 isChildOf: function (filter) {
@@ -140,9 +142,16 @@
             /*click on button will generate text*/
 
             $('#generate').click(function () {
-                //var texts = $(".paraBorderRight").children().each();
-                console.log("hi");
-                //$('#generate').append(texts);
+                console.log("button clicked.");
+
+                var texts = '';
+                $(".paraBorderRight li").each(function (index, item) {
+
+                    var $item = $(item).attr('data-para-text');
+                    texts += $item +" ";
+                });
+                console.log(texts);
+                $('#generatedText').html(texts);
 
             });
         });
