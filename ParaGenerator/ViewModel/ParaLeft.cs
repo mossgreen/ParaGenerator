@@ -1,12 +1,9 @@
-﻿using System;
+﻿using ParaGenerator.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using ParaGenerator.Models;
 
 namespace ParaGenerator.ViewModel
 {
-    public class ParaLeftRight
+    public class ParaLeft
     {
 
         public IEnumerable<Para> Paras { get; set; }
