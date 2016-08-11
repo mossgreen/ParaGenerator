@@ -1,0 +1,42 @@
+﻿@model ParaGenerator.Models.Para
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Para</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ParaText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParaText)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ParaLeft.ParaId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParaLeft.ParaId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ParaRight.ParaId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParaRight.ParaId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ParaId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

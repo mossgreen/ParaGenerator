@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ParaDBModelStoreContainer" CdmEntityContainer="ParaDBEntities">
+    <EntitySetMapping Name="Paras">
+      <EntityTypeMapping TypeName="ParaDBModel.Para">
+        <MappingFragment StoreEntitySet="Para">
+          <ScalarProperty Name="ParaId" ColumnName="ParaId" />
+          <ScalarProperty Name="ParaText" ColumnName="ParaText" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ParaLefts">
+      <EntityTypeMapping TypeName="ParaDBModel.ParaLeft">
+        <MappingFragment StoreEntitySet="ParaLeft">
+          <ScalarProperty Name="ParaId" ColumnName="ParaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ParaRights">
+      <EntityTypeMapping TypeName="ParaDBModel.ParaRight">
+        <MappingFragment StoreEntitySet="ParaRight">
+          <ScalarProperty Name="ParaId" ColumnName="ParaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="initialize" FunctionName="ParaDBModel.Store.initialize" />
+    <FunctionImportMapping FunctionImportName="move" FunctionName="ParaDBModel.Store.move" />
+  </EntityContainerMapping>
+</Mapping>

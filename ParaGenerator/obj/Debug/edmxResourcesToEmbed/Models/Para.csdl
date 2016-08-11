@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ParaDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Para">
+    <Key>
+      <PropertyRef Name="ParaId" />
+    </Key>
+    <Property Name="ParaId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ParaText" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ParaLeft" Relationship="Self.FK_ParaLeft_Para" FromRole="Para" ToRole="ParaLeft" />
+    <NavigationProperty Name="ParaRight" Relationship="Self.FK_ParaRight_Para" FromRole="Para" ToRole="ParaRight" />
+  </EntityType>
+  <EntityType Name="ParaLeft">
+    <Key>
+      <PropertyRef Name="ParaId" />
+    </Key>
+    <Property Name="ParaId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Para" Relationship="Self.FK_ParaLeft_Para" FromRole="ParaLeft" ToRole="Para" />
+  </EntityType>
+  <EntityType Name="ParaRight">
+    <Key>
+      <PropertyRef Name="ParaId" />
+    </Key>
+    <Property Name="ParaId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Para" Relationship="Self.FK_ParaRight_Para" FromRole="ParaRight" ToRole="Para" />
+  </EntityType>
+  <Association Name="FK_ParaLeft_Para">
+    <End Role="Para" Type="Self.Para" Multiplicity="1" />
+    <End Role="ParaLeft" Type="Self.ParaLeft" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Para">
+        <PropertyRef Name="ParaId" />
+      </Principal>
+      <Dependent Role="ParaLeft">
+        <PropertyRef Name="ParaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ParaRight_Para">
+    <End Role="Para" Type="Self.Para" Multiplicity="1" />
+    <End Role="ParaRight" Type="Self.ParaRight" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Para">
+        <PropertyRef Name="ParaId" />
+      </Principal>
+      <Dependent Role="ParaRight">
+        <PropertyRef Name="ParaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ParaDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Paras" EntityType="Self.Para" />
+    <EntitySet Name="ParaLefts" EntityType="Self.ParaLeft" />
+    <EntitySet Name="ParaRights" EntityType="Self.ParaRight" />
+    <AssociationSet Name="FK_ParaLeft_Para" Association="Self.FK_ParaLeft_Para">
+      <End Role="Para" EntitySet="Paras" />
+      <End Role="ParaLeft" EntitySet="ParaLefts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ParaRight_Para" Association="Self.FK_ParaRight_Para">
+      <End Role="Para" EntitySet="Paras" />
+      <End Role="ParaRight" EntitySet="ParaRights" />
+    </AssociationSet>
+    <FunctionImport Name="initialize" />
+    <FunctionImport Name="move">
+      <Parameter Name="ParaId" Mode="In" Type="String" />
+      <Parameter Name="Direction" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+</Schema>

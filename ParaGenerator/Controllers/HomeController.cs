@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ParaGenerator.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +9,14 @@ namespace ParaGenerator.Controllers
 {
     public class HomeController : Controller
     {
+
+        private ParaDBEntities db = new ParaDBEntities();
         public ActionResult Index()
         {
-            return View();
+            db.initialize();
+            var viewModel = db.ParaLefts.ToList();
+
+            return View("ParaLeft", viewModel);
         }
 
         public ActionResult About()

@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ParaDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Para">
+    <Key>
+      <PropertyRef Name="ParaId" />
+    </Key>
+    <Property Name="ParaId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ParaText" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ParaLeft">
+    <Key>
+      <PropertyRef Name="ParaId" />
+    </Key>
+    <Property Name="ParaId" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ParaRight">
+    <Key>
+      <PropertyRef Name="ParaId" />
+    </Key>
+    <Property Name="ParaId" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_ParaLeft_Para">
+    <End Role="Para" Type="Self.Para" Multiplicity="1" />
+    <End Role="ParaLeft" Type="Self.ParaLeft" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Para">
+        <PropertyRef Name="ParaId" />
+      </Principal>
+      <Dependent Role="ParaLeft">
+        <PropertyRef Name="ParaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ParaRight_Para">
+    <End Role="Para" Type="Self.Para" Multiplicity="1" />
+    <End Role="ParaRight" Type="Self.ParaRight" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Para">
+        <PropertyRef Name="ParaId" />
+      </Principal>
+      <Dependent Role="ParaRight">
+        <PropertyRef Name="ParaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="initialize" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="move" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ParaId" Type="nvarchar" Mode="In" />
+    <Parameter Name="Direction" Type="nvarchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="ParaDBModelStoreContainer">
+    <EntitySet Name="Para" EntityType="Self.Para" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ParaLeft" EntityType="Self.ParaLeft" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ParaRight" EntityType="Self.ParaRight" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_ParaLeft_Para" Association="Self.FK_ParaLeft_Para">
+      <End Role="Para" EntitySet="Para" />
+      <End Role="ParaLeft" EntitySet="ParaLeft" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ParaRight_Para" Association="Self.FK_ParaRight_Para">
+      <End Role="Para" EntitySet="Para" />
+      <End Role="ParaRight" EntitySet="ParaRight" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

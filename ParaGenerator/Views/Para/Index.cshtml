@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ParaGenerator.Models.Para>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ParaText)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ParaLeft.ParaId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ParaRight.ParaId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ParaText)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ParaLeft.ParaId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ParaRight.ParaId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ParaId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ParaId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ParaId })
+        </td>
+    </tr>
+}
+
+</table>
