@@ -59,6 +59,14 @@
 @section scripts
 {
     <script>
+        (function ($) {
+            $.fn.extend({
+                isChildOf: function (filter) {
+                    return $(filter).find(this).length > 0;
+                }
+            });
+        })(jQuery);
+
 
        console.log("start script.");
         $(document).ready(function(){
@@ -72,13 +80,40 @@
                 var paraId = text.attr("data-para-id");
                 var paraText = text.attr("data-para-text");
 
-                var direction = "ToR";
+                /*
+                if text is a child of paraBorderLeft
+                direction = ToR
+
+                if text is a child of paraBorderRight
+                direction = ToL                
+                */
+
+                var ToR = text.isChildOf('.paraBorderLeft');
+
+                var ToL = text.isChildOf('.paraBorderRight');
+
+
+                if(ToR ){ 
+                    var direction = "ToR";
+                }
+
+                if (ToL) {
+                    var direction = 'ToL';
+                }
+
+
+
+
+
+
+               
                 $.post( "/api/Para",
                     { paraId: paraId, direction: direction }
                     
                     )
                 .done(
                     function () {
+                        console.log("post success.");
                         text.hide();
 
                         $(".paraBorderRight ul").append('<li data-para-id = "' + paraId + '" data-para-text="'+paraText+'" class="js-click-move"  >' + paraId + '</li>');
