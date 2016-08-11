@@ -12,7 +12,7 @@
 
                 @foreach (var p in Model.Paras)
             {
-                    <li data-para-id="@p.ParaId" data-para-text="@p.ParaText"  js-click-move>@p.ParaId  </li>
+                    <li data-para-id="@p.ParaId" data-para-text="@p.ParaText"  class="js-click-move">@p.ParaId  </li>
                 }
 
 
@@ -55,14 +55,30 @@
 @section scripts
 {
     <script>
-        $(document).ready(function () {
-            $("js-click-move").click(function (e) {
+
+       console.log("start script.");
+        $(document).ready(function(){
+        
+            console.log("into function");
+            $(".js-click-move").click(function (e) {
+
+                console.log("clicked");
             
                 var text = $(e.target);
-
-            
+                $.post( "/api/Para",
+                    {paraId: text.attr("data-para-id"), direction:"ToR" }
+                    
+                    )
+                .done(
+                    console.log("done")
+                )
+                .fail(
+                    console.log('failed')
+                );
             });
+        
         });
+
     </script>
 }
 

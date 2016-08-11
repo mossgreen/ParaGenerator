@@ -80,3 +80,9 @@ C:\Projects\ParaGenerator\ParaGenerator\bin\Microsoft.Owin.Security.MicrosoftAcc
 C:\Projects\ParaGenerator\ParaGenerator\obj\Debug\ParaGenerator.csprojResolveAssemblyReference.cache
 C:\Projects\ParaGenerator\ParaGenerator\obj\Debug\ParaGenerator.dll
 C:\Projects\ParaGenerator\ParaGenerator\obj\Debug\ParaGenerator.pdb
+C:\Projects\ParaGenerator\ParaGenerator\bin\System.Net.Http.Formatting.dll
+C:\Projects\ParaGenerator\ParaGenerator\bin\System.Web.Http.dll
+C:\Projects\ParaGenerator\ParaGenerator\bin\System.Web.Http.WebHost.dll
+C:\Projects\ParaGenerator\ParaGenerator\bin\System.Net.Http.Formatting.xml
+C:\Projects\ParaGenerator\ParaGenerator\bin\System.Web.Http.xml
+C:\Projects\ParaGenerator\ParaGenerator\bin\System.Web.Http.WebHost.xml
