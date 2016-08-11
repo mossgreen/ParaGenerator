@@ -40,13 +40,17 @@
 
 
         <div class="col-sm-3 paraBorder paraBorderRight">
+            <ul>
 
+            </ul>
         </div>
     </div>
 
     <div class="row textAreaRow">
         <textarea rows="8" cols="50"  >
-            At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies.
+
+            test test test
+
         </textarea>
     </div>
 
@@ -65,15 +69,27 @@
                 console.log("clicked");
             
                 var text = $(e.target);
+                var paraId = text.attr("data-para-id");
+                var paraText = text.attr("data-para-text");
+
+                var direction = "ToR";
                 $.post( "/api/Para",
-                    {paraId: text.attr("data-para-id"), direction:"ToR" }
+                    { paraId: paraId, direction: direction }
                     
                     )
                 .done(
-                    console.log("done")
+                    function () {
+                        text.hide();
+
+
+                        //var para = "<li data-para-id='"+paraId+"' data-para-text='"+ paraText+"' class='js-click-move'>"+ ParaId+"</li>"
+                        $(".paraBorderRight ul").append('<li>'+paraId+'</li>');
+                    }
                 )
                 .fail(
-                    console.log('failed')
+                    function () {
+                       alert("ajax post failed.")
+                    }
                 );
             });
         
