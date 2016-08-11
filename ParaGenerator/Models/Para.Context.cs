@@ -48,5 +48,10 @@ namespace ParaGenerator.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("move", paraIdParameter, directionParameter);
         }
+
+        internal void select(Func<object, bool> p)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
