@@ -30,11 +30,13 @@
             </div>
 
             <div id="rightArrow">
-                <button type="button" class="btn btn-default" aria-label="Left Align">
+                <button type="button" class="btn btn-default " aria-label="Left Align">
                     <span class="glyphicon glyphicon-arrow-left
 " aria-hidden="true"></span>
                 </button>
             </div>
+
+            <button type="button" class="btn btn-success btn-xs" id="generate">Generate</button>
         </div>
 
 
@@ -49,7 +51,7 @@
     <div class="row textAreaRow">
         <textarea rows="8" cols="50"  >
 
-            test test test
+            Your Text will be generated here.
 
         </textarea>
     </div>
@@ -73,6 +75,7 @@
         
             console.log("into function");
 
+            /*click on text will trager ajax post*/
             $('.row').on('click', '.js-click-move', function (e) {
             
 
@@ -134,7 +137,11 @@
                 );
             });
    
-        
+            /*click on button will generate text*/
+
+            $('#generate').click(function () {
+
+            });
         });
 
     </script>
