@@ -1,18 +1,23 @@
 ﻿using ParaGenerator.Models;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace ParaGenerator.ViewModel
 {
     public class ParasViewModel
     {
 
-        public IEnumerable<Para> Paras { get; set; }
 
-        public void Add(Para p)
+        private List<Para> paras = new List<Para>();
+        public List<Para> Paras
         {
+            get
+            {
+                return paras;
 
-            Paras.ToList().Add(p);
+
+            }
         }
     }
+
+
 }

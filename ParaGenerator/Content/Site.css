@@ -22,3 +22,28 @@ select,
 textarea {
     max-width: 280px;
 }
+
+
+/*modification*/
+div.ParaRow {
+
+    min-width:400px;
+}
+div.paraBorder{
+        border: 1px solid red;
+
+            min-height: 80px;
+
+}
+
+div.middlePara{
+    text-align:center;
+}
+
+.textAreaRow{
+    margin: auto;
+    width: 80%;
+    padding: 10px;
+}
+
+

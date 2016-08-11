@@ -1,7 +1,68 @@
-﻿@model  IList<int> 
+﻿@model  ParaGenerator.ViewModel.ParasViewModel
 @{
     ViewBag.Title = "ParaLeft";
 }
 
-<h2>ParaLeft</h2>
+<h2>Paras</h2>
+<div class="container">
+
+    <div class="row ParaRow">
+        <div class="col-sm-3 paraBorder paraBorderLeft" >
+            <ul>
+
+                @foreach (var p in Model.Paras)
+            {
+                    <li data-para-id="@p.ParaId" data-para-text="@p.ParaText"  js-click-move>@p.ParaId  </li>
+                }
+
+
+            </ul>
+        </div>
+
+        <div class="col-sm-3 middlePara">
+           
+
+            <div id="leftArrow">
+                <button type="button" class="btn btn-default" aria-label="Left Align">
+                    <span class="glyphicon glyphicon-arrow-right
+" aria-hidden="true"></span>
+                </button>
+            </div>
+
+            <div id="rightArrow">
+                <button type="button" class="btn btn-default" aria-label="Left Align">
+                    <span class="glyphicon glyphicon-arrow-left
+" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+
+
+
+        <div class="col-sm-3 paraBorder paraBorderRight">
+
+        </div>
+    </div>
+
+    <div class="row textAreaRow">
+        <textarea rows="8" cols="50"  >
+            At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies.
+        </textarea>
+    </div>
+
+</div>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("js-click-move").click(function (e) {
+            
+                var text = $(e.target);
+
+            
+            });
+        });
+    </script>
+}
 

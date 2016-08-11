@@ -21,15 +21,17 @@ namespace ParaGenerator.Controllers
 
             db.initialize();
 
-            var ids = db.ParaLefts.ToList();
+            var ids = db.ParaLefts.Select(p => p.ParaId).ToList();
 
             var viewModel = new ParasViewModel();
 
             foreach (var id in ids)
             {
-                var texts = db.Paras.Where(t => t.ParaId == id.ToString()).ToList();
-                var para = new Para { ParaLeft = id, ParaText = texts.ToString() };
-                viewModel.Add(para);
+                var para = db.Paras.Single(p => p.ParaId == id);
+
+
+                //viewModel.add(para as Para);
+                viewModel.Paras.Add(para);
             }
 
             return View("ParaLeft", viewModel);
