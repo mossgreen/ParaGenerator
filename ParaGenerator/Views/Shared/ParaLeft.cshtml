@@ -81,9 +81,7 @@
                     function () {
                         text.hide();
 
-
-                        //var para = "<li data-para-id='"+paraId+"' data-para-text='"+ paraText+"' class='js-click-move'>"+ ParaId+"</li>"
-                        $(".paraBorderRight ul").append('<li>'+paraId+'</li>');
+                        $(".paraBorderRight ul").append('<li data-para-id = "' + paraId + '" data-para-text="'+paraText+'" class="js-click-move"  >' + paraId + '</li>');
                     }
                 )
                 .fail(
