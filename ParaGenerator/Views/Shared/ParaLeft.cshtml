@@ -3,8 +3,8 @@
     ViewBag.Title = "ParaLeft";
 }
 
-<h2>Paras</h2>
-<div class="container-fluid">
+
+<div class="container-fluid" id="ParaContainer">
 
     <div class="row ParaRow">
         <div class="col-sm-3 paraBorder paraBorderLeft" >
@@ -54,11 +54,14 @@
     </div>
 
     <div class="row textAreaRow">
-        <textarea rows="8" cols="50" id="generatedText" >
 
-            Your Text will be generated here.
+        <div class="col-sm-3"></div>
+        <div class="col-md-3  ">
 
-        </textarea>
+            <textarea rows="5" cols="50" id="generatedText">Your Text will be generated here.
+
+            </textarea>
+        </div>
     </div>
 
 </div>
@@ -83,7 +86,7 @@
             console.log("into function");
 
             /*click on text will trager ajax post*/
-            $('.row').on('click', '.js-click-move', function (e) {
+            $('.row').on('dblclick', '.js-click-move', function (e) {
             
 
                 console.log("clicked");

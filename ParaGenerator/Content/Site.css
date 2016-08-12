@@ -18,8 +18,8 @@
 
 /* Set width on the form input elements since they're 100% wide by default */
 input,
-select,
-textarea {
+select
+ {
     max-width: 280px;
 }
 
@@ -30,7 +30,7 @@ div.ParaRow {
     min-width:400px;
 }
 div.paraBorder{
-        border: 1px solid red;
+        border: 1px solid gray;
 
             min-height: 80px;
 
@@ -40,14 +40,39 @@ div.middlePara{
     text-align:center;
 }
 
-.textAreaRow{
-    margin: auto;
-    width: 80%;
-    padding: 10px;
-}
 
 
 #rightArrow {
     padding: 5px 0;
 
+}
+
+
+#ParaContainer {
+padding:20px 0;
+
+margin: auto;
+
+}
+
+
+textarea #generatedText{
+           width: 500px;
+
+}
+
+ul {
+    list-style-type:none
+}
+
+ul li{
+    margin-left: -35px;
+}
+
+textarea
+{
+    border:1px solid #999999;
+    width:98%;
+    margin:5px 0;
+    padding:1%;
 }
