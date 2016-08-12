@@ -11,13 +11,18 @@
             <ul>
 
                 @foreach (var p in Model.Paras)
-            {
+                {
                     <li data-para-id="@p.ParaId" data-para-text="@p.ParaText"  class="js-click-move">@p.ParaId  </li>
                 }
 
 
             </ul>
         </div>
+      
+        <select>
+            <option></option>
+        </select>
+       
 
         <div class="col-sm-3 middlePara">
            
@@ -111,7 +116,10 @@
 
 
                 $.post("/api/Para",
-                    { paraId: paraId, direction: direction }
+                    {
+                        paraId: paraId,
+                        direction: direction
+                    }
 
                     )
 
