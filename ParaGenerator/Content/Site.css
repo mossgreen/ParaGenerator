@@ -25,6 +25,13 @@ select
 
 
 /*modification*/
+
+#navbar-brand{
+     margin-right: 20px;
+
+
+}
+
 div.ParaRow {
 
         padding-left: 14px;
