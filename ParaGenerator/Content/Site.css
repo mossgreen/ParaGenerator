@@ -27,6 +27,7 @@ select
 /*modification*/
 div.ParaRow {
 
+        padding-left: 14px;
     min-width:400px;
 }
 div.paraBorder{
@@ -72,7 +73,7 @@ ul li{
 textarea
 {
     border:1px solid #999999;
-    width:98%;
+    width:76.5%;
     margin:5px 0;
     padding:1%;
 }
