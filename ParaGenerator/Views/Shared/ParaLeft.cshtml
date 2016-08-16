@@ -51,31 +51,44 @@
     </div>
 
    
-  
-        <select name="paras" multiple id="selectTable">
-            @foreach (var p in Model.Paras)
+    <div class="row">
+        <div class="col-sm-3">
+            <select name="paras" multiple class="selectTable" id="leftSelectTable">
+                @foreach (var p in Model.Paras)
             {
-                <option value="@p.ParaId"  data-para-id="@p.ParaId" data-para-text="@p.ParaText" class="js-click-move"  >@p.ParaId  </option>
-            }
- 
-        </select>
-        <button id="submitButton" type="button" class="btn btn-primary" aria-label="Left Align"><span class="glyphicon glyphicon-arrow-right
-" aria-hidden="true"></span></button>
-  
+                    <option value="@p.ParaId" data-para-id="@p.ParaId" data-para-text="@p.ParaText" class="js-click-move">@p.ParaId  </option>
+                }
 
+            </select>
+        </div>
 
-    <div class="row textAreaRow">
-
-      
-        <div class="col-md-3  ">
-
-            <textarea rows="5" cols="50" id="generatedText">Your Text will be generated here.
-
-            </textarea>
+        <div class="col-sm-3">
+            <button id="toRSubmitButton" type="button" class="btn" aria-label="Left Align">
+                <span class="glyphicon glyphicon-arrow-right
+" aria-hidden="true"></span>
+            </button>
+            <button id="toRSubmitButton" type="button" class="btn" aria-label="Left Align">
+                <span class="glyphicon glyphicon-arrow-right
+" aria-hidden="true"></span>
+            </button>
+        </div>
+        <div class="col-sm-3">
+            <select name="paras" multiple class="selectTable" id="rightSelectTable"></select>
         </div>
     </div>
+        <div class="row textAreaRow">
 
-</div>
+
+            <div class="col-md-3  ">
+
+                <textarea rows="5" cols="50" id="generatedText">
+                    Your Text will be generated here.
+
+                </textarea>
+            </div>
+        </div>
+
+    </div>
 
 @section scripts
 {
@@ -83,20 +96,28 @@
 
     $(document).ready(function () {
 
-        $('#submitButton').click(function () {
+        $('#toRSubmitButton').click(function () {
             console.log(" r move button clicked");
 
-            var option = $('#selectTable option:selected');
-            var paraId = $('#selectTable option:selected').attr("data-para-id");
-            var paraText = $('#selectTable option:selected').attr("data-para-text");
+            var option = $('.selectTable option:selected');
+            var paraId = $('.selectTable option:selected').attr("data-para-id");
+            var paraText = $('.selectTable option:selected').attr("data-para-text");
 
             console.log("paraId: " + paraId);
             console.log("paraText: " + paraText);
 
+            var ToR = option.isChildOf('#leftSelectTable');
+
+            var ToL = option.isChildOf('#rightSelectTable');
+
+            console.log(ToR);
+            console.log(ToL);
+            var direction = "Tor";
+
             $.post("/api/Para",
                    {
                        paraId: paraId,
-                       direction: "ToR"
+                       direction: direction
                    }
 
                    )
@@ -108,6 +129,9 @@
                       if ( direction = "ToR") {
                           option.remove();
                           $(".paraBorderRight ul").append('<li data-para-id = "' + paraId + '" data-para-text="' + paraText + '" class="js-click-move"  >' + paraId + '</li>');
+                          $("#rightSelectTable").append('<option data-para-id = "' + paraId + '" data-para-text="' + paraText + '" class="js-click-move"  >' + paraId + '</option>');
+
+
                       }
 
                       if (ToL) {
