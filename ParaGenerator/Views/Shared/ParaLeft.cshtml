@@ -118,9 +118,14 @@
 
 
 
-            console.log(ToR);
-            console.log(ToL);
-            var direction = "ToR";
+            console.log("ToR :"+ToR);
+            console.log("ToL: "+ToL);
+
+            if(ToR)
+                var direction = "ToR";
+
+            if (ToL)
+                var direction = "ToL";
 
             $.post("/api/Para",
                    {
