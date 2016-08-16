@@ -76,6 +76,8 @@
             var paraId = $('.selectTable option:selected').attr("data-para-id");
             var paraText = $('.selectTable option:selected').attr("data-para-text");
 
+            if (paraId === undefined) { return; }
+
             console.log("paraId: " + paraId);
             console.log("paraText: " + paraText);
 
@@ -111,6 +113,8 @@
             var option = $('.selectTable option:selected');
             var paraId = $('.selectTable option:selected').attr("data-para-id");
             var paraText = $('.selectTable option:selected').attr("data-para-text");
+
+            if (paraId === undefined) { return; }
 
             console.log("paraId: " + paraId);
             console.log("paraText: " + paraText);
