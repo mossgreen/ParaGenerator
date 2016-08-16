@@ -52,27 +52,34 @@
 
    
     <div class="row">
-        <div class="col-sm-3">
+        <div class="col-sm-4">
             <select name="paras" multiple class="selectTable" id="leftSelectTable">
                 @foreach (var p in Model.Paras)
             {
-                    <option value="@p.ParaId" data-para-id="@p.ParaId" data-para-text="@p.ParaText" class="js-click-move">@p.ParaId  </option>
+                    <option value="@p.ParaId" data-para-id="@p.ParaId" data-para-text="@p.ParaText">@p.ParaId  </option>
                 }
 
             </select>
         </div>
+        <div class="col-sm-4">
+            <div id="leftArrow" class="submitButton">
+                <button type="button" class="btn btn-default" aria-label="Left Align">
+                    <span class="glyphicon glyphicon-arrow-right
+" aria-hidden="true"></span>
+                </button>
+            </div>
 
-        <div class="col-sm-3">
-            <button id="toRSubmitButton" type="button" class="btn" aria-label="Left Align">
-                <span class="glyphicon glyphicon-arrow-right
+            <div id="rightArrow" class="submitButton" >
+                <button type="button" class="btn btn-default " aria-label="Left Align">
+                    <span class="glyphicon glyphicon-arrow-left
 " aria-hidden="true"></span>
-            </button>
-            <button id="toRSubmitButton" type="button" class="btn" aria-label="Left Align">
-                <span class="glyphicon glyphicon-arrow-right
-" aria-hidden="true"></span>
-            </button>
+                </button>
+            </div>
+
+            <button type="button" class="btn btn-success btn-xs" id="generate">Generate</button>
+
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-4">
             <select name="paras" multiple class="selectTable" id="rightSelectTable"></select>
         </div>
     </div>
@@ -96,8 +103,8 @@
 
     $(document).ready(function () {
 
-        $('#toRSubmitButton').click(function () {
-            console.log(" r move button clicked");
+        $('.submitButton').click(function () {
+            console.log("button clicked");
 
             var option = $('.selectTable option:selected');
             var paraId = $('.selectTable option:selected').attr("data-para-id");
@@ -106,13 +113,14 @@
             console.log("paraId: " + paraId);
             console.log("paraText: " + paraText);
 
-            var ToR = option.isChildOf('#leftSelectTable');
+            var ToR = $('.selectTable option:selected').isChildOf("#leftSelectTable");
+            var ToL = $('.selectTable option:selected').isChildOf("#righttSelectTable");
 
-            var ToL = option.isChildOf('#rightSelectTable');
+
 
             console.log(ToR);
             console.log(ToL);
-            var direction = "Tor";
+            var direction = "ToR";
 
             $.post("/api/Para",
                    {
