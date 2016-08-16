@@ -55,60 +55,41 @@
 {
 <script>
 
+
+    //defind jQuery method isChildOf()
+    (function ($) {
+        $.fn.extend({
+            isChildOf: function (filter) {
+                return $(filter).find(this).length > 0;
+            }
+        });
+    })(jQuery);
+
+
     $(document).ready(function () {
 
+        $('#leftSubmitBtn').click(function () {
+            console.log("to right btn clicked");
 
-        var option = $('.selectTable option:selected');
-        var paraId = $('.selectTable option:selected').attr("data-para-id");
-        var paraText = $('.selectTable option:selected').attr("data-para-text");
-
-
-        $('.submitButton').click(function () {
-            console.log("button clicked");
+            var option = $('.selectTable option:selected');
+            var paraId = $('.selectTable option:selected').attr("data-para-id");
+            var paraText = $('.selectTable option:selected').attr("data-para-text");
 
             console.log("paraId: " + paraId);
             console.log("paraText: " + paraText);
 
-            var ToR = $('.selectTable option:selected').isChildOf("#leftSelectTable");
-            var ToL = $('.selectTable option:selected').isChildOf("#righttSelectTable");
-
-
-
-            console.log("ToR :"+ToR);
-            console.log("ToL: "+ToL);
-
-            if(ToR)
-                var direction = "ToR";
-
-            if (ToL)
-                var direction = "ToL";
-
             $.post("/api/Para",
                    {
                        paraId: paraId,
-                       direction: direction
+                       direction: "ToR"
                    }
 
                    )
 
                .done(
                   function () {
-                      console.log("post success.");
-
-                      if ( direction = "ToR") {
                           option.remove();
-                          $(".paraBorderRight ul").append('<li data-para-id = "' + paraId + '" data-para-text="' + paraText + '" class="js-click-move"  >' + paraId + '</li>');
-                          $("#rightSelectTable").append('<option data-para-id = "' + paraId + '" data-para-text="' + paraText + '" class="js-click-move"  >' + paraId + '</option>');
-
-
-                      }
-
-                      if (ToL) {
-                          text.remove();
-                          $(".paraBorderLeft ul").append('<li data-para-id = "' + paraId + '" data-para-text="' + paraText + '" class="js-click-move"  >' + paraId + '</li>');
-                      }
-
-
+                          $("#rightSelectTable").append('<option data-para-id = "' + paraId + '" data-para-text="' + paraText + '" class="js-click-move"  >' + paraId + '</option>'); console.log("post success.");
                   }
                )
             .fail(
@@ -122,7 +103,41 @@
         });
 
 
+        $('#rightSubmitBtn').click(function () {
 
+            console.log("to left button clicked");
+
+            var option = $('.selectTable option:selected');
+            var paraId = $('.selectTable option:selected').attr("data-para-id");
+            var paraText = $('.selectTable option:selected').attr("data-para-text");
+
+            console.log("paraId: " + paraId);
+            console.log("paraText: " + paraText);
+
+            $.post("/api/Para",
+                 {
+                     paraId: paraId,
+                     direction: "ToL"
+                 }
+
+                 )
+
+             .done(
+                function () {
+                    option.remove();
+                    $("#leftSelectTable").append('<option data-para-id = "' + paraId + '" data-para-text="' + paraText + '" class="js-click-move"  >' + paraId + '</option>');
+
+                    console.log("post success.");
+                }
+             )
+          .fail(
+              function () {
+
+                  alert("post failed.");
+              }
+          );
+
+        });
         
     });
  
