@@ -5,52 +5,7 @@
 
 
 <div class="container-fluid" id="ParaContainer">
-    @*first row*@
-    <div class="row ParaRow">
-        <div class="col-sm-3 paraBorder paraBorderLeft" >
-            <ul>
 
-                @foreach (var p in Model.Paras)
-                {
-                    <li data-para-id="@p.ParaId" data-para-text="@p.ParaText"  class="js-click-move">@p.ParaId  </li>
-                }
-
-
-            </ul>
-        </div>
-     
-       
-
-        <div class="col-sm-3 middlePara">
-           
-
-            <div id="leftArrow">
-                <button type="button" class="btn btn-default" aria-label="Left Align">
-                    <span class="glyphicon glyphicon-arrow-right
-" aria-hidden="true"></span>
-                </button>
-            </div>
-
-            <div id="rightArrow">
-                <button type="button" class="btn btn-default " aria-label="Left Align">
-                    <span class="glyphicon glyphicon-arrow-left
-" aria-hidden="true"></span>
-                </button>
-            </div>
-
-            <button type="button" class="btn btn-success btn-xs" id="generate">Generate</button>
-        </div>
-
-
-
-        <div class="col-sm-3 paraBorder paraBorderRight clearfix">
-            <ul>
-
-            </ul>
-        </div>
-    </div>
-
-   
     <div class="row">
         <div class="col-sm-4">
             <select name="paras" multiple class="selectTable" id="leftSelectTable">
@@ -62,15 +17,15 @@
             </select>
         </div>
         <div class="col-sm-4">
-            <div id="leftArrow" class="submitButton">
-                <button type="button" class="btn btn-default" aria-label="Left Align">
+            <div >
+                <button id="leftSubmitBtn"  type="button" class="submitButton btn btn-default" aria-label="Left Align">
                     <span class="glyphicon glyphicon-arrow-right
 " aria-hidden="true"></span>
                 </button>
             </div>
 
-            <div id="rightArrow" class="submitButton" >
-                <button type="button" class="btn btn-default " aria-label="Left Align">
+            <div >
+                <button id="rightSubmitBtn"  type="button" class="submitButton btn btn-default " aria-label="Left Align">
                     <span class="glyphicon glyphicon-arrow-left
 " aria-hidden="true"></span>
                 </button>
@@ -88,8 +43,7 @@
 
             <div class="col-md-3  ">
 
-                <textarea rows="5" cols="50" id="generatedText">
-                    Your Text will be generated here.
+                <textarea rows="5" cols="50" id="generatedText">Your Text will be generated here.
 
                 </textarea>
             </div>
@@ -103,12 +57,14 @@
 
     $(document).ready(function () {
 
+
+        var option = $('.selectTable option:selected');
+        var paraId = $('.selectTable option:selected').attr("data-para-id");
+        var paraText = $('.selectTable option:selected').attr("data-para-text");
+
+
         $('.submitButton').click(function () {
             console.log("button clicked");
-
-            var option = $('.selectTable option:selected');
-            var paraId = $('.selectTable option:selected').attr("data-para-id");
-            var paraText = $('.selectTable option:selected').attr("data-para-text");
 
             console.log("paraId: " + paraId);
             console.log("paraText: " + paraText);
@@ -175,7 +131,7 @@
 
 
 
-    <script>
+    @*<script>
 
 
 
@@ -276,6 +232,6 @@
             });
         });
 
-</script>
+</script>*@
 }
 
