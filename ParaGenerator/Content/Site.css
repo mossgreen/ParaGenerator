@@ -80,7 +80,7 @@ ul li{
 textarea
 {
     border:1px solid #999999;
-    width:76.5%;
+    width:75%;
     margin:5px 0;
     padding:1%;
 }
@@ -92,4 +92,8 @@ textarea
 #submitButton{
     position: absolute;
     margin: 20px;
+}
+
+#greenBtn{
+        margin-left: -10px;
 }

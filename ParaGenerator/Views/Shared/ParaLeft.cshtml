@@ -31,8 +31,9 @@
                 </button>
             </div>
 
-            <button type="button" class="btn btn-success btn-xs" id="generate">Generate</button>
-
+            <div id="greenBtn">
+                <button type="button" class="btn btn-success btn-xs" id="generate">Generate</button>
+            </div>
         </div>
         <div class="col-sm-4">
             <select name="paras" multiple class="selectTable" id="rightSelectTable"></select>
@@ -141,6 +142,21 @@
         
     });
  
+
+    /*click on button will generate text*/
+
+    $('#generate').click(function () {
+        console.log("generate button clicked.");
+
+        var texts = '';
+        $("#rightSelectTable option").each(function (index, item) {
+
+            var $item = $(item).attr('data-para-text');
+            texts += $item +" ";
+        });
+        console.log(texts);
+        $('#generatedText').html(texts);
+    });
 </script>
 
 
