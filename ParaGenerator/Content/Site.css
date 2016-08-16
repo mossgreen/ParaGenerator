@@ -84,3 +84,12 @@ textarea
     margin:5px 0;
     padding:1%;
 }
+
+#selectTable{
+    min-width:40px;
+}
+
+#submitButton{
+    position: absolute;
+    margin: 20px;
+}

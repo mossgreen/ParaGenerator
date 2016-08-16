@@ -5,7 +5,7 @@
 
 
 <div class="container-fluid" id="ParaContainer">
-
+    @*first row*@
     <div class="row ParaRow">
         <div class="col-sm-3 paraBorder paraBorderLeft" >
             <ul>
@@ -51,6 +51,18 @@
     </div>
 
    
+  
+        <select name="paras" multiple id="selectTable">
+            @foreach (var p in Model.Paras)
+            {
+                <option value="@p.ParaId"  data-para-id="@p.ParaId" data-para-text="@p.ParaText" class="js-click-move"  >@p.ParaId  </option>
+            }
+ 
+        </select>
+        <button id="submitButton" type="button" class="btn btn-primary" aria-label="Left Align"><span class="glyphicon glyphicon-arrow-right
+" aria-hidden="true"></span></button>
+  
+
 
     <div class="row textAreaRow">
 
@@ -67,7 +79,31 @@
 
 @section scripts
 {
+<script>
+
+    $(document).ready(function () {
+
+        $('#submitButton').click(function () {
+            console.log(" r move button clicked");
+
+            var selectedText = $('#selectTable option:selected').attr("data-para-text");
+            alert(selectedText);
+
+        });
+
+
+
+        
+    });
+ 
+</script>
+
+
+
+
     <script>
+
+
 
         //defind jQuery method isChildOf()
         (function ($) {
@@ -81,12 +117,12 @@
 
        console.log("start script.");
         $(document).ready(function(){
-        
+
             console.log("into function");
 
             /*click on text will trager ajax post*/
             $('.row').on('dblclick', '.js-click-move', function (e) {
-            
+
 
                 console.log("clicked");
 
@@ -100,7 +136,7 @@
                 direction = ToR
 
                 if text is a child of paraBorderRight
-                direction = ToL                
+                direction = ToL
                 */
 
                 var ToR = text.isChildOf('.paraBorderLeft');
@@ -148,7 +184,7 @@
                     }
                 );
             });
-   
+
             /*click on button will generate text*/
 
             $('#generate').click(function () {
@@ -166,6 +202,6 @@
             });
         });
 
-    </script>
+</script>
 }
 
