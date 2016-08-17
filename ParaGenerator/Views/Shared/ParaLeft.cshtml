@@ -105,7 +105,6 @@
 
         });
 
-
         $('#rightSubmitBtn').click(function () {
 
             console.log("to left button clicked");
@@ -147,6 +146,53 @@
         $('.selectTable').on('dblclick', '.js-click-move', function (e) {
 
             console.log("double clicked");
+
+            var option = $('.selectTable option:selected');
+            var paraId = $('.selectTable option:selected').attr("data-para-id");
+            var paraText = $('.selectTable option:selected').attr("data-para-text");
+
+            var ToR = option.isChildOf('#leftSelectTable');
+            var ToL = option.isChildOf('#rightSelectTable');
+
+            var direction;
+
+            if (ToR)
+                direction = "ToR";
+
+            if (ToL)
+                direction = "ToL";
+
+
+            console.log(direction);
+
+            $.post("/api/Para",
+                 {
+                     paraId: paraId,
+                     direction: direction
+                 }
+
+                 )
+
+             .done(
+                function () {
+                    option.remove();
+
+
+                    if(ToR)
+                        $("#rightSelectTable").append('<option data-para-id = "' + paraId + '" data-para-text="' + paraText + '" class="js-click-move"  >' + paraId + '</option>'); console.log("post success.");
+
+                    if (ToL)
+                        $("#leftSelectTable").append('<option data-para-id = "' + paraId + '" data-para-text="' + paraText + '" class="js-click-move"  >' + paraId + '</option>');
+
+                    console.log("post success.");
+                }
+             )
+          .fail(
+              function () {
+
+                  alert("post failed.");
+              }
+          );
         });
 
         
