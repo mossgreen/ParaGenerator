@@ -175,11 +175,11 @@
 
              .done(
                 function () {
-                    option.remove();
 
+                     option.remove();
 
-                    if(ToR)
-                        $("#rightSelectTable").append('<option data-para-id = "' + paraId + '" data-para-text="' + paraText + '" class="js-click-move"  >' + paraId + '</option>'); console.log("post success.");
+                     if(ToR)
+                        $("#rightSelectTable").append('<option data-para-id = "' + paraId + '" data-para-text="' + paraText + '" class="js-click-move"  >' + paraId + '</option>'); 
 
                     if (ToL)
                         $("#leftSelectTable").append('<option data-para-id = "' + paraId + '" data-para-text="' + paraText + '" class="js-click-move"  >' + paraId + '</option>');
