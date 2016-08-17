@@ -11,7 +11,7 @@
             <select name="paras" multiple class="selectTable" id="leftSelectTable">
                 @foreach (var p in Model.Paras)
             {
-                    <option value="@p.ParaId" data-para-id="@p.ParaId" data-para-text="@p.ParaText">@p.ParaId  </option>
+                    <option value="@p.ParaId" data-para-id="@p.ParaId" data-para-text="@p.ParaText" class="js-click-move" >@p.ParaId  </option>
                 }
 
             </select>
@@ -143,6 +143,12 @@
           );
 
         });
+
+        $('.selectTable').on('dblclick', '.js-click-move', function (e) {
+
+            console.log("double clicked");
+        });
+
         
     });
  
