@@ -69,6 +69,7 @@
 
     $(document).ready(function () {
 
+        
         $('#leftSubmitBtn').click(function () {
             console.log("to right btn clicked");
 
@@ -143,10 +144,10 @@
 
         });
 
-        $('.selectTable').on('dblclick', '.js-click-move', function (e) {
+        $('.selectTable').on('dblclick', '.js-click-move', function () {
 
             console.log("double clicked");
-
+            
             var option = $('.selectTable option:selected');
             var paraId = $('.selectTable option:selected').attr("data-para-id");
             var paraText = $('.selectTable option:selected').attr("data-para-text");
@@ -216,109 +217,5 @@
 </script>
 
 
-
-
-    @*<script>
-
-
-
-        //defind jQuery method isChildOf()
-        (function ($) {
-            $.fn.extend({
-                isChildOf: function (filter) {
-                    return $(filter).find(this).length > 0;
-                }
-            });
-        })(jQuery);
-
-
-       console.log("start script.");
-        $(document).ready(function(){
-
-            console.log("into function");
-
-            /*click on text will trager ajax post*/
-            $('.row').on('dblclick', '.js-click-move', function (e) {
-
-
-                console.log("clicked");
-
-                var text = $(e.target);
-                var paraId = text.attr("data-para-id");
-                var paraText = text.attr("data-para-text");
-
-
-                /*
-                if text is a child of paraBorderLeft
-                direction = ToR
-
-                if text is a child of paraBorderRight
-                direction = ToL
-                */
-
-                var ToR = text.isChildOf('.paraBorderLeft');
-
-                var ToL = text.isChildOf('.paraBorderRight');
-
-
-                if (ToR) {
-                    var direction = "ToR";
-                }
-
-                if (ToL) {
-                    var direction = 'ToL';
-                }
-
-
-                $.post("/api/Para",
-                    {
-                        paraId: paraId,
-                        direction: direction
-                    }
-
-                    )
-
-                .done(
-                    function () {
-                        console.log("post success.");
-
-                        if (ToR) {
-                            text.remove();
-                            $(".paraBorderRight ul").append('<li data-para-id = "' + paraId + '" data-para-text="' + paraText + '" class="js-click-move"  >' + paraId + '</li>');
-                        }
-
-                        if (ToL) {
-                            text.remove();
-                            $(".paraBorderLeft ul").append('<li data-para-id = "' + paraId + '" data-para-text="' + paraText + '" class="js-click-move"  >' + paraId + '</li>');
-                        }
-
-
-                    }
-                )
-                .fail(
-                    function () {
-                        alert("ajax post failed.")
-                    }
-                );
-            });
-
-            /*click on button will generate text*/
-
-            $('#generate').click(function () {
-                console.log("button clicked.");
-
-                var texts = '';
-                $(".paraBorderRight li").each(function (index, item) {
-
-                    var $item = $(item).attr('data-para-text');
-                    texts += $item +" ";
-                });
-                console.log(texts);
-                $('#generatedText').html(texts);
-
-            });
-        });
-
-</script>*@
 }
 
